@@ -3,7 +3,7 @@ const hbs = require('hbs');
 const fs = require('fs');
 
 // variable de entorno seteada por heroku
-const port = process.env.port || 3000;
+const port = process.env.PORTv || 3000;
 var app = express();
 
 //define directorio de las partials (templates)
@@ -55,6 +55,12 @@ app.get('/about', (request, response) => {
 app.get('/bad', (request, response) => {
     response.send({
         errorMessage: "Unable to fulfill request"
+    });
+});
+
+app.get('/projects', (request, response) => {
+    response.render('projects.hbs', {
+        pageTitle: 'Projects Page'
     });
 });
 
